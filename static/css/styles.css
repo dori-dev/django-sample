@@ -39,6 +39,122 @@ body a:visited {
   text-decoration: none;
 }
 
+/* Base */
+
 .content {
   margin: 20px 0;
+}
+
+.form-control {
+  max-width: 100%;
+  width: 720px;
+}
+
+.custom-btn {
+  font-size: 18px;
+  padding: 4px 8px;
+}
+
+.custom-form {
+  margin-top: 15px;
+}
+
+.custom-form label {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+.custom-form input,
+.custom-form textarea {
+  font-size: 18px;
+}
+
+/* Notes:Index */
+
+.title h1 {
+  display: inline-block;
+}
+
+.title a {
+  display: inline-block;
+  font-size: 24px;
+  padding: 4px 10px;
+  margin: 0 0 12px 20px;
+}
+
+.note {
+  padding: 10px;
+  background-color: #dadfe2;
+  border-radius: 10px;
+}
+
+.note:hover {
+  background-color: #cdd1d5;
+}
+
+.note-link {
+  color: #000;
+}
+
+.note-link:hover {
+  color: #000;
+}
+
+.note h2 {
+  text-transform: capitalize;
+}
+
+.note p {
+  margin-top: 4px;
+}
+
+.note small {
+  color: #222;
+}
+
+/* Notes:Detail */
+
+.note-detail {
+  padding: 10px;
+  background-color: #dadfe2;
+  border-radius: 10px;
+}
+
+.note-detail h1 {
+  text-transform: capitalize;
+  overflow: hidden;
+}
+
+.note-detail small {
+  color: #222;
+}
+
+.note-detail hr {
+  margin: 18px 0;
+}
+
+.note-detail p {
+  margin-right: 10px;
+  max-width: 80%;
+  overflow: hidden;
+}
+
+/* Notes:Form */
+
+label[for="id_title"] {
+  visibility: hidden;
+}
+
+label[for="id_title"]::before {
+  visibility: visible;
+  content: "Title";
+}
+
+label[for="id_body"] {
+  visibility: hidden;
+}
+
+label[for="id_body"]::before {
+  visibility: visible;
+  content: "Detail";
 }

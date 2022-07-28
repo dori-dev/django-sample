@@ -2,13 +2,17 @@
 {% load tz %}
 {% load date_time %}
 
-{% block title %}{{ note.title }}{% endblock title %}
+{% block title %}{{note.title }}{% endblock title %}
 
 {% block content %}
-<div>
-    <h1>{{ note.title }}</h1>
-    <small>{{ note.created|timezone:"Asia/Tehran"|change_format }}</small>
-    <hr>
-    <p>{{ note.body|linebreaks }}</p>
+<div class="note-detail">
+  <h1>{{ note.title }}</h1>
+  <small>
+    {{ note.created|timezone:"Asia/Tehran"|change_format }}
+  </small>
+  <hr />
+  <p>{{ note.body|linebreaks }}</p>
+  <a href="{% url 'notes:delete' note.id %}" class="btn btn-danger">Delete</a>
+  <a href="{% url 'notes:update' note.id %}" class="btn btn-primary">Update</a>
 </div>
 {% endblock content %}

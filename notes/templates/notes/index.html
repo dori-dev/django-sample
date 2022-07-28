@@ -5,30 +5,39 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<div>
-    <h1>Your Notes</h1>
+<div class="title">
+  <h1>Your Notes</h1>
+  <a href="{% url 'notes:create' %}" class="btn btn-primary btn-lg">
+    Create Note
+  </a>
 </div>
-<br>
-<div>
-    {% if user.is_authenticated %}
+<br />
+<div class="container-fluid">
+  {% if user.is_authenticated %}
+    <div>
+      {% if notes %}
         <div>
-            {% if notes %}
-                <div>
-                    {% for note in notes %}
-                        <a href="{% url 'notes:detail' note.id %}" class="note-link">
-                            <div class="note">
-                                <h2>{{ note.title|truncatechars:30 }}</h2>
-                                <p>{{ note.body|truncatechars:100 }}</p>
-                                <small>{{ note.created|timezone:"Asia/Tehran"|change_format }}</small>
-                            </div>
-                        </a>
-                    {% endfor %}
-                </div>
-                <br>
-            {% else %}
-            {% endif %}   
+          {% for note in notes %}
+          <a href="{% url 'notes:detail' note.id %}" class="note-link">
+            <div class="note">
+              <h2>{{ note.title|truncatechars:30 }}</h2>
+              <p>{{ note.body|truncatechars:100 }}</p>
+              <small>{{ note.created|timezone:"Asia/Tehran"|change_format }}</small>
+            </div>
+          </a>
+          <br />
+          {% endfor %}
         </div>
-    {% else %}
-    {% endif %}   
+      {% else %}
+        <h4>
+          You don't have any note, to create to click
+          <a href="{% url 'notes:create' %}" class="btn btn-primary custom-btn">
+            Here
+          </a>
+        </h4>
+      {% endif %}
+    </div>
+  {% else %}
+  {% endif %}
 </div>
 {% endblock content %}

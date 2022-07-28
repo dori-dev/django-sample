@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.handlers.wsgi import WSGIRequest
 from .models import Note
 from .forms import NoteCreateUpdateForm
@@ -19,6 +20,7 @@ def index(request: WSGIRequest):
     return render(request, "notes/index.html", context)
 
 
+@login_required(login_url='accounts:login')
 def detail(request: WSGIRequest, pk: int):
     note = get_object_or_404(Note, pk=pk)
     if note.author != request.user:
@@ -29,6 +31,7 @@ def detail(request: WSGIRequest, pk: int):
     return render(request, "notes/detail.html", context)
 
 
+@login_required(login_url='accounts:login')
 def create(request: WSGIRequest):
     if request.method == "POST":
         form = NoteCreateUpdateForm(request.POST)
@@ -51,6 +54,7 @@ def create(request: WSGIRequest):
     return render(request, "notes/create.html", context)
 
 
+@login_required(login_url='accounts:login')
 def update(request: WSGIRequest, pk: int):
     note = get_object_or_404(Note, pk=pk)
     if note.author != request.user:
@@ -74,6 +78,7 @@ def update(request: WSGIRequest, pk: int):
     return render(request, "notes/update.html", context)
 
 
+@login_required(login_url='accounts:login')
 def delete(request: WSGIRequest, pk: int):
     note = get_object_or_404(Note, pk=pk)
     if note.author != request.user:

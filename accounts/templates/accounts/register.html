@@ -3,18 +3,37 @@
 {% block title %}Register{% endblock title %}
 
 {% block content %}
-<h1>Register</h1>
-<form action="" method="post" class="container-fluid custom-form">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Register" class="btn btn-success custom-btn">
-  <div class="account-suggestion">
-    <h5>You have an account?</h5>
-    {% if request.GET.next %}
-      <a href="{% url 'acccounts:login' %}?next={{ request.GET.next }}" class="btn btn-primary">Login</a>
-      {% else %}
-      <a href="{% url 'acccounts:login' %}" class="btn btn-primary">Login</a>
-      {% endif %}
+  <div>
+    {% if "create" in request.GET.next %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Register</strong> to create a note!
+      </div>
+    {% elif "detail" in request.GET.next %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Register</strong> to view a note!
+      </div>
+    {% elif "update" in request.GET.next %}
+      <div class="alert alert-danger"  role="alert">
+        <strong>Register</strong> to update a note!
+      </div>
+    {% elif "delete" in request.GET.next %}
+      <div class="alert alert-danger custom-alert" role="alert">
+        <strong>Register</strong> to delete a todo!
+      </div>
+    {% endif %}
   </div>
-</form>
+  <h1>Register</h1>
+  <form action="" method="post" class="container-fluid custom-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Register" class="btn btn-success custom-btn">
+    <div class="account-suggestion">
+      <h5>You have an account?</h5>
+      {% if request.GET.next %}
+        <a href="{% url 'accounts:login' %}?next={{ request.GET.next }}" class="btn btn-primary">Login</a>
+      {% else %}
+        <a href="{% url 'accounts:login' %}" class="btn btn-primary">Login</a>
+      {% endif %}
+    </div>
+  </form>
 {% endblock content %}

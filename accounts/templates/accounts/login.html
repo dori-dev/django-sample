@@ -3,18 +3,37 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-<h1>Login</h1>
-<form action="" method="post" class="container-fluid custom-form">
+  <div>
+    {% if "create" in request.GET.next %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Login</strong> to create a note!
+      </div>
+    {% elif "detail" in request.GET.next %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Login</strong> to view a note!
+      </div>
+    {% elif "update" in request.GET.next %}
+      <div class="alert alert-danger"  role="alert">
+        <strong>Login</strong> to update a note!
+      </div>
+    {% elif "delete" in request.GET.next %}
+      <div class="alert alert-danger custom-alert" role="alert">
+        <strong>Login</strong> to delete a todo!
+      </div>
+    {% endif %}
+  </div>
+  <h1>Login</h1>
+  <form action="" method="post" class="container-fluid custom-form">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Login" class="btn btn-success custom-btn">
     <div class="account-suggestion">
-        <h5>Don't have an account?</h5>
-        {% if request.GET.next %}
+      <h5>Don't have an account?</h5>
+      {% if request.GET.next %}
         <a href="{% url 'accounts:register' %}?next={{ request.GET.next }}" class="btn btn-primary">Register</a>
-        {% else %}
+      {% else %}
         <a href="{% url 'accounts:register' %}" class="btn btn-primary">Register</a>
-        {% endif %}
+      {% endif %}
     </div>
-</form>
+  </form>
 {% endblock content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
@@ -67,3 +67,13 @@ def login_view(request: WSGIRequest):
         'form': form,
     }
     return render(request, 'accounts/login.html', context)
+
+
+def logout_view(request: WSGIRequest):
+    logout(request)
+    messages.success(
+        request,
+        'you <strong>logged out</strong> successfully.'
+        extra_tags='success'
+    )
+    return redirect('notes:index')

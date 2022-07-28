@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<h1>Login</h1>
+<form action="" method="post" class="container-fluid custom-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login" class="btn btn-success custom-btn">
+</form>
+{% endblock content %}

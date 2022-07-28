@@ -31,3 +31,20 @@ class UserRegistrationForm(forms.ModelForm):
         help_texts = {
             'username': None
         }
+
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField(
+        help_text=None,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'autofocus': ''
+            }
+        )
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs=INPUT_CLASS
+        )
+    )

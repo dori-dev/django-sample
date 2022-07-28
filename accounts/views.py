@@ -73,7 +73,7 @@ def logout_view(request: WSGIRequest):
     logout(request)
     messages.success(
         request,
-        'you <strong>logged out</strong> successfully.'
+        'you <strong>logged out</strong> successfully.',
         extra_tags='success'
     )
     return redirect('notes:index')

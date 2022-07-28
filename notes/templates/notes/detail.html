@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% block title %}{{ note.title }}{% endblock title %}
+
+{% block content %}
+<div>
+    <h1>{{ note.title }}</h1>
+    <small>{{ note.created|timezone:"Asia/Tehran" }}</small>
+    <hr>
+    <p>{{ note.body|linebreaks }}</p>
+</div>
+{% endblock content %}

@@ -14,11 +14,13 @@
             {% if notes %}
                 <div>
                     {% for note in notes %}
-                        <div class="note">
-                            <h2>{{ note.title|truncatechars:30 }}</h2>
-                            <p>{{ note.body|truncatechars:100 }}</p>
-                            <small>{{ note.created|timezone:"Asia/Tehran" }}</small>
-                        </div>
+                        <a href="{% url 'notes:detail' note.id %}" class="note-link">
+                            <div class="note">
+                                <h2>{{ note.title|truncatechars:30 }}</h2>
+                                <p>{{ note.body|truncatechars:100 }}</p>
+                                <small>{{ note.created|timezone:"Asia/Tehran" }}</small>
+                            </div>
+                        </a>
                     {% endfor %}
                 </div>
                 <br>

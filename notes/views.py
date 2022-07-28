@@ -61,7 +61,7 @@ def update(request: WSGIRequest, pk: int):
             form.save()
             messages.success(
                 request,
-                'this to <strong>update</strong> successfully.',
+                'this to <strong>updated</strong> successfully.',
                 extra_tags='success'
             )
             return redirect('notes:detail', pk)
@@ -72,3 +72,17 @@ def update(request: WSGIRequest, pk: int):
         'note': note
     }
     return render(request, "notes/update.html", context)
+
+
+def delete(request: WSGIRequest, pk: int):
+    note = get_object_or_404(Note, pk=pk)
+    if note.author != request.user:
+        raise Http404
+    note.delete()
+    messages.success(
+        request,
+        f'"{note.title}" note '
+        '<strong>deleted</strong> successfully.',
+        extra_tags='success'
+    )
+    return redirect('notes:index')

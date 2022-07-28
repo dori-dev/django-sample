@@ -12,11 +12,11 @@
       <div class="navbar-nav">
           <a {% if url_name == 'index' %}{{ active }}{% else %}class="nav-link"{% endif %} href="{% url 'notes:index' %}">Home</a>
           {% if user.is_authenticated %}
-          <a class="nav-link" href="#">Create</a>
-          <a class="nav-link" href="#">Logout</a>
+          <a {% if url_name == 'create' %}{{ active }}{% else %}class="nav-link"{% endif %} href="{% url 'notes:create' %}">Create</a>
+          <a {% if url_name == 'logout' %}{{ active }}{% else %}class="nav-link"{% endif %} href="{% url 'accounts:logout' %}">Logout</a>
           {% else %}
-          <a class="nav-link" href="#">Register</a>
-          <a class="nav-link" href="#">Login</a>
+          <a {% if url_name == 'register' %}{{ active }}{% else %}class="nav-link"{% endif %} href="{% url 'accounts:register' %}">Register</a>
+          <a {% if url_name == 'login' %}{{ active }}{% else %}class="nav-link"{% endif %} href="{% url 'accounts:login' %}">Login</a>
           {% endif %}
       </div>
     </div>

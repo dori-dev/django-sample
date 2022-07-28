@@ -38,6 +38,11 @@
       {% endif %}
     </div>
   {% else %}
+  <h4>
+    Hello and welcome, if you want to create todo, first
+    <a href="{% url 'accounts:register' %}" class="btn btn-primary custom-btn">Register</a> or
+    <a href="{% url 'accounts:login' %}" class="btn btn-primary custom-btn">Login</a>
+  </h4>
   {% endif %}
 </div>
 {% endblock content %}

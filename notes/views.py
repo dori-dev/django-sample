@@ -1,5 +1,6 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib import messages
 from django.core.handlers.wsgi import WSGIRequest
 from .models import Note
 from .forms import NoteCreateFrom
@@ -35,6 +36,12 @@ def create(request: WSGIRequest):
             note: Note = form.save(commit=False)
             note.author = request.user
             note.save()
+            messages.success(
+                request,
+                f'"{note.title}" note, '
+                '<strong>created</strong> successfully.',
+                extra_tags='success'
+            )
             return redirect('notes:index')
     else:
         form = NoteCreateFrom()

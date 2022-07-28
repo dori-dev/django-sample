@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: left;
+  background: #ecf0f1;
+  color: #000;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+}
+
+body a,
+a:hover,
+body a:active,
+body a:focus,
+body a:visited {
+  text-decoration: none;
+}
+
+.content {
+  margin: 20px 0;
+}

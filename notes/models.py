@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 from django.contrib.auth.models import User
 
 
@@ -14,6 +15,13 @@ class Note(models.Model):
     created = models.DateTimeField(
         auto_now_add=True
     )
+
+    @admin.display(
+        ordering='created',
+        description='Created'
+    )
+    def formatted_datetime(self):
+        return self.created.strftime("%B %d, %I:%M %p")
 
     def __str__(self) -> str:
         return self.title

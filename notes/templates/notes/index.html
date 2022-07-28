@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load tz %}
+{% load date_time %}
 
 {% block title %}Home{% endblock title %}
 
@@ -18,7 +19,7 @@
                             <div class="note">
                                 <h2>{{ note.title|truncatechars:30 }}</h2>
                                 <p>{{ note.body|truncatechars:100 }}</p>
-                                <small>{{ note.created|timezone:"Asia/Tehran" }}</small>
+                                <small>{{ note.created|timezone:"Asia/Tehran"|change_format }}</small>
                             </div>
                         </a>
                     {% endfor %}

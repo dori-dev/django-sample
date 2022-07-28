@@ -8,5 +8,13 @@
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Register" class="btn btn-success custom-btn">
+  <div class="account-suggestion">
+    <h5>You have an account?</h5>
+    {% if request.GET.next %}
+      <a href="{% url 'acccounts:login' %}?next={{ request.GET.next }}" class="btn btn-primary">Login</a>
+      {% else %}
+      <a href="{% url 'acccounts:login' %}" class="btn btn-primary">Login</a>
+      {% endif %}
+  </div>
 </form>
 {% endblock content %}

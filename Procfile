@@ -1,0 +1,1 @@
+web: gunicorn -c config.py --log-file -

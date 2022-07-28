@@ -61,7 +61,13 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-## Run Codes
+## Run Tests
+
+```
+python manage.py test
+```
+
+## Run Project
 
 ```
 python manage.py runserver

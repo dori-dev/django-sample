@@ -32,9 +32,10 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-## Create .Env File
+## Change .Env Files
 
 set your environment variables in `.env.local` to `.env.production`.<br>
+<br>
 
 ## Set STATE Variable
 
